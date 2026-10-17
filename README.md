@@ -1,5 +1,8 @@
 # NativePHP Biometrics
 
+[![Latest Version](https://img.shields.io/packagist/v/wuninsu/nativephp-biometrics.svg)](https://packagist.org/packages/wuninsu/nativephp-biometrics)
+[![License](https://img.shields.io/packagist/l/wuninsu/nativephp-biometrics.svg)](LICENSE)
+
 Fingerprint, Face ID and Touch ID prompts for NativePHP Mobile v4 apps.
 
 - **Android:** `androidx.biometric` `BiometricPrompt` (Class 3 / strong biometrics).
@@ -7,23 +10,32 @@ Fingerprint, Face ID and Touch ID prompts for NativePHP Mobile v4 apps.
 
 The prompt answers one question: is the phone's owner holding it? The fingerprint or face never reaches the app. To protect a secret behind the prompt, keep the secret itself in secure storage (for example `wuninsu/nativephp-secure-storage`), and use the prompt to decide whether the app may use it.
 
+> **Early release (0.x).** The PHP side is covered by tests and the Android code compiles against NativePHP Mobile 4.6. Testing on real phones is in progress, so the API may still change before 1.0.
+
+## Requirements
+
+- PHP 8.3+
+- `nativephp/mobile` ^4.6
+- Android 8 (API 26) or newer, iOS 18.2 or newer
+
 ## Install
 
-From a local folder (Composer path repository):
-
-```json
-"repositories": [
-    { "type": "path", "url": "packages/nativephp-biometrics" }
-]
+```sh
+composer require wuninsu/nativephp-biometrics
 ```
 
+NativePHP compiles only the plugins you register. If your app has no `app/Providers/NativeServiceProvider.php` yet, publish it first:
+
 ```sh
-composer require wuninsu/nativephp-biometrics:@dev
+php artisan vendor:publish --tag=nativephp-plugins-provider
+```
+
+Then register the plugin and rebuild the native project:
+
+```sh
 php artisan native:plugin:register wuninsu/nativephp-biometrics
 php artisan native:install --force
 ```
-
-Requires `nativephp/mobile` ^4.6, Android 8 (API 26) or newer, iOS 18.2 or newer.
 
 The plugin adds `NSFaceIDUsageDescription` ("Use Face ID to unlock the app.") to the iOS Info.plist. Apple requires it before Face ID can be used.
 
