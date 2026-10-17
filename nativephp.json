@@ -1,0 +1,39 @@
+{
+    "namespace": "WuninsuBiometrics",
+    "bridge_functions": [
+        {
+            "name": "WuninsuBiometrics.Status",
+            "android": "com.wuninsu.biometrics.BiometricsFunctions.Status",
+            "ios": "WuninsuBiometricsFunctions.Status",
+            "description": "Whether the phone can use biometrics, and which kind"
+        },
+        {
+            "name": "WuninsuBiometrics.Prompt",
+            "android": "com.wuninsu.biometrics.BiometricsFunctions.Prompt",
+            "ios": "WuninsuBiometricsFunctions.Prompt",
+            "description": "Show the biometric prompt; the result arrives as an event"
+        }
+    ],
+    "android": {
+        "min_version": 26,
+        "permissions": [],
+        "dependencies": {
+            "implementation": [
+                "androidx.biometric:biometric:1.1.0"
+            ]
+        }
+    },
+    "ios": {
+        "min_version": "18.2",
+        "info_plist": {
+            "NSFaceIDUsageDescription": "Use Face ID to unlock the app."
+        },
+        "dependencies": {
+            "swift_packages": [],
+            "pods": []
+        }
+    },
+    "events": [
+        "Wuninsu\\NativeBiometrics\\Events\\Completed"
+    ]
+}

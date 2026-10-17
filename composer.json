@@ -1,0 +1,31 @@
+{
+    "name": "wuninsu/nativephp-biometrics",
+    "description": "Fingerprint, Face ID and Touch ID prompts for NativePHP Mobile apps.",
+    "type": "nativephp-plugin",
+    "license": "MIT",
+    "keywords": ["nativephp", "mobile", "biometrics", "face-id", "fingerprint"],
+    "authors": [
+        {
+            "name": "Fuseini Abdul-Hafiz"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "nativephp/mobile": "^4.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Wuninsu\\NativeBiometrics\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Wuninsu\\NativeBiometrics\\BiometricsServiceProvider"
+            ]
+        },
+        "nativephp": {
+            "manifest": "nativephp.json"
+        }
+    }
+}
